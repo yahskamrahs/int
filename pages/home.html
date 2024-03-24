@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Page</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  a {
+  color: #f7a816;
+  text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:focus {
+  color: #fcbd49;
+  outline: none;
+  text-decoration: none;
+}
+  header {
+            margin-top: 13px;
+            padding: 15px;
+            color: white;
+            text-align: left;
+            position: fixed; /* Change to absolute positioning */
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        p{
+            margin-top: -10px;
+            font-size: 26px;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+        }
+
+        header h1 {
+            font-size: 30px;
+            font-weight: bold;
+            margin: 0;
+            display: inline;
+            margin-left: 50px;
+        }
+        h1{
+            font-size: 35px;
+        }
+        h2{
+            margin-top: -10px;
+            font-size: 60px;
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        header span {
+            font-weight: bold;
+            color: #ffcc00;
+        }
+
+        header nav {
+            margin-right: 50px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        header a:hover{
+            color: #ffcc00;
+            font-size: 17px;
+            
+        }
+
+         /* Styles for the account container */
+  .account-container {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+  .account-container button{
+    width: 70px;
+    height: 30px;
+    border-radius: 2px;
+    color: #ccc;
+    font-weight: bold;
+    padding:5px;
+    cursor: pointer;
+    background-color: #ff1500;
+  }
+  .account-container button:hover{
+    padding: 7px;
+  }
+
+  .account-container a {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    text-decoration: none;
+  }
+
+  .account-container a:hover {
+    color: #f7a816;
+  }
+
+
+
+        .main-section {
+            padding-top: -10px; /* Adjusted padding to account for the header height */
+            height: 610px;
+            background-image: url('../Assets/bgimage.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 0;
+        }
+        .main-section span{
+          font-weight: bold;
+            color: #ffcc00;
+        }
+        .main-section p{
+          font-size: 35px;
+        }
+        .main-section u{
+          font-size: 25px;
+          text-decoration: none;
+        }
+
+        .main-section h2 {
+          font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        
+  .user-stocks {
+    padding: 20px;
+    margin-top: 50px;
+  }
+  .user-stocks p{
+    color: #ff1500;
+    font-weight: bold;
+  }
+  .user-stocks h1{
+  font-size: 35px;
+  text-align: center;  
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  footer {
+            background-color: #020202e0;
+            color: white;
+            padding: 30px;
+            height: 30px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+  #footer {
+  background: #06011b;
+  padding: 30px 0;
+  color: #fff;
+  font-size: 14px;
+}
+
+#footer .copyright {
+  text-align: center;
+}
+
+#footer .credits {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #ccc;
+}
+.emoji-image {
+    width: 13px; /* Adjust this value to your preferred width */
+    height: 13px; /* Maintain the aspect ratio */
+    vertical-align: middle;
+  }
+  @media only screen and (max-width: 600px) {
+    header{
+      position: absolute;
+      width: 30px;
+      padding: 15px;
+    }
+    header a{
+      margin-right: 0px;
+    }
+    header h1 {
+      font-size: 20px;
+      font-weight: bold;
+      margin: -1px;
+      display: inline;
+      margin-right: 70px;
+        }
+  .main-section {
+    min-height: 300px; /* Adjusted height for mobile */
+    padding: 20px; /* Added padding for mobile */
+  }
+
+  .main-section h2 {
+    font-size: 40px; /* Adjusted font size for mobile */
+  }
+
+  .main-section p {
+    font-size: 20px; /* Adjusted font size for mobile */
+  }
+
+  .main-section u {
+    font-size: 16px; /* Adjusted font size for mobile */
+  }
+
+  .user-stocks {
+    margin-top: 30px; /* Adjusted margin for mobile */
+    padding: 10px; /* Adjusted padding for mobile */
+  }
+
+  .user-stocks h1 {
+    font-size: 20px; /* Adjusted font size for mobile */
+  }
+
+  table {
+    font-size: 14px; /* Adjusted font size for mobile */
+  }
+
+  th, td {
+    padding: 5px; /* Adjusted padding for mobile */
+  }
+}
+
+</style>
+</head>
+<body>
+  <header>
+    <h1> <span>INT </span>INITIALS</h1>
+    
+    <nav>
+    
+
+      
+        <a href="portfolio.html">PORTFOLIO</a>
+        
+        <a href="#" id="accountLink">ACCOUNT</a> 
+    </nav>
+</header>
+
+<section class="main-section" id="home">
+  <u>Welcome to</u>
+  <h2><span>INT</span> INITIALS</h2>
+  <p id="slogan">Think For <span id="typingText"></span></p>
+  
+</section>
+<div class="account-container" id="accountContainer">
+  <a href="personalinfo.html">Personal Information</a>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<section class="user-stocks">
+  <h1>IMPORTANT NOTICE</h1>
+  <p> Due to SBI’s new Rules, We regret to inform you that INT INITIALS is Closing from 1st April 2024. We Are releasing all sectors Funds At End of march. Please report us with your INT Id’s and clear your account before 31st March 2024, with Government applicable taxes and charges.</p>
+ 
+</section>
+
+<footer>
+  <div class="credits">
+     All rights are reserved by <a href="https://yahskamrahs.github.io/personal/">INT INITIALS</a> 
+    </div>
+    <div class="copyright">
+      &copy; Copyright <strong>2024</strong>
+    </div>
+</footer>
+
+<script src="../usersData.js"></script>
+<script>
+  var loggedInUser = localStorage.getItem("loggedInUser");
+  var accountLink = document.getElementById("accountLink");
+  var accountContainer = document.getElementById("accountContainer");
+
+
+  if (!loggedInUser) {
+    // Redirect to index page if not logged in
+    window.location.href = "../index.html";
+  }
+
+  accountLink.addEventListener("click", function(event) {
+    event.preventDefault();
+    accountContainer.style.display = accountContainer.style.display === "block" ? "none" : "block";
+  });
+
+  // Logout function
+  function logout() {
+    // Your logout logic here, for example:
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "../index.html"; // Redirect to index page
+  }
+
+
+
+
+  // Typing animation effect for the slogan
+  var words = ["Invest", "Trade", "Grow"];
+  var typingSpeed = 150; // Adjust typing speed (in milliseconds)
+  var wordIndex = 0;
+  var charIndex = 0;
+
+  var typingElement = document.getElementById("typingText");
+  var sloganElement = document.getElementById("slogan");
+
+  function typeText() {
+    if (charIndex < words[wordIndex].length) {
+      typingElement.textContent += words[wordIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(typeText, typingSpeed);
+    } else {
+      setTimeout(eraseText, 1000);
+    }
+  }
+
+  function eraseText() {
+    if (charIndex > 0) {
+      typingElement.textContent = words[wordIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(eraseText, typingSpeed);
+    } else {
+      wordIndex = (wordIndex + 1) % words.length;
+      setTimeout(typeText, typingSpeed);
+    }
+  }
+
+  // Call the typing animation function when the page is loaded
+  window.onload = function() {
+    typeText();
+  };
+
+
+
+  var loggedInUser = localStorage.getItem("loggedInUser");
+
+  // Get user stocks data
+  var userStocks = usersData[loggedInUser].stocks;
+
+  // Populate user stocks table
+  var userStocksBody = document.getElementById("userStocksBody");
+  userStocks.forEach(function(stock) {
+    var row = "<tr><td>" + stock.Sector + "</td><td>" + stock.token + "</td><td>" + stock.value + "</td><td>" + stock.status + "</td></tr>";
+    userStocksBody.innerHTML += row;
+  });
+</script>
+
+</body>
+</html>

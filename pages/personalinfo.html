@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Information</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: #333;
+  }
+  a {
+    color: #f7a816;
+    text-decoration: none;
+  }
+  a:hover,
+  a:active,
+  a:focus {
+    color: #fcbd49;
+    outline: none;
+    text-decoration: none;
+  }
+  header {
+    margin-top: -80px;
+    padding: 15px;
+    color: white;
+    text-align: left;
+    position: fixed;
+    
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #020202;
+  }
+  header h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0;
+    display: inline;
+    margin-left: 50px;
+  }
+  header span {
+    font-weight: bold;
+    color: #ffcc00;
+  }
+  header nav {
+    margin-right: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  header a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+  header a:hover {
+    color: #ffcc00;
+    font-size: 17px;
+  }
+
+
+
+
+
+  .userinfo-container {
+    margin-left: 25%;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #222;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+  
+  }
+  .userinfo-container h2 {
+    color: #ffcc00;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .userinfo-container p {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .userinfo-container strong {
+    font-weight: bold;
+  }
+
+
+  .wallet-container {
+    margin-top: 80px;
+    margin-left: 25%;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 120px;
+    width: 600px;
+    background-color: #222;
+    border-radius: 5px;
+    
+    
+  }
+  .wallet-container p {
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .wallet-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .wallet-buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    background-color: #fcbd49;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .wallet-buttons button:hover {
+    background-color: #f7a816;
+  }
+  footer {
+    background-color: #020202;
+    color: white;
+    padding: 30px;
+    height: 30px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  footer .credits {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 13px;
+    color: #ccc;
+  }
+
+  @media only screen and (max-width: 600px) {
+    header {
+      position: fixed;
+      width: 100%;
+      padding: 15px;
+  }
+  .wallet-container{
+    width: 300px;
+    margin-left: 15%;
+  }
+  .userinfo-container{
+    width: 300px;
+    margin-left: 15%;
+  }
+    header h1 {
+      font-size: 20px;
+      font-weight: bold;
+      margin: -1px;
+      display: inline;
+      margin-right: 45px;
+    }
+
+    footer {
+      background-color: #020202;
+      color: white;
+      padding: 30px;
+      height: 30px;
+      width: 100%;
+      text-align: center;
+      margin-top: 150px;
+
+    }
+
+  
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1> <span>INT </span>INITIALS</h1>
+    <nav>
+      <a href="portfolio.html">PORTFOLIO</a>
+      <a href="home.html">HOME</a>
+    </nav>
+  </header>
+
+  <div class="wallet-container">
+    <p>Your Wallet Balance: $<span id="userWalletBalance"></span></p>
+    <div class="wallet-buttons">
+      <button onclick="showMessage('Withdrawal is temporarily closed')">Withdraw Fund</button>
+      <button onclick="showMessage('Adding Fund is temporarily closed')">Add Fund</button>
+    </div>
+  </div>
+
+  <section class="userinfo-container">
+    <h2>YOUR INFORMATION</h2>
+    <p><strong>Name:</strong> <span id="userName"></span></p>
+    <p><strong>Username:</strong> <span id="userUsername"></span></p>
+    <p><strong>Mobile:</strong> <span id="userMobile"></span></p>
+    <p><strong>Address:</strong> <span id="userAddress"></span></p>
+    <!-- User stocks data will be populated here -->
+  </section>
+
+  <footer>
+    <div class="credits">
+      All rights are reserved by <a href="https://yahskamrahs.github.io/personal/">INT INITIALS</a>
+    </div>
+  </footer>
+
+<script src="../usersData.js"></script>
+<script>
+  var loggedInUser = localStorage.getItem("loggedInUser");
+  var user = usersData[loggedInUser];
+  
+  if (!loggedInUser) {
+    // Redirect to index page if not logged in
+    window.location.href = "../index.html";
+  }
+
+  // Populate user information
+  document.getElementById("userName").textContent = user.name;
+  document.getElementById("userUsername").textContent = loggedInUser;
+  document.getElementById("userMobile").textContent = user.mobile;
+  document.getElementById("userAddress").textContent = user.address;
+  document.getElementById("userWalletBalance").textContent = user.wallet_balance;
+
+  // Function to show message popup
+  function showMessage(message) {
+    alert(message);
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgb(37, 38, 46);
+  }
+  a{
+     
+     color: #007bff;
+    text-decoration: none;
+  }
+  a:hover{
+    color: #0056b3;
+  }
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    width: 690px; /* Increased width */
+    height: 400px; /* Increased height */
+  }
+  .left-side {
+    flex: 1;
+    margin: 0; /* Reset margin */
+  }
+  .login-image {
+    width: 100%; /* Adjust image width */
+    height: 100%; /* Adjust image height */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  .right-side {
+    flex: 1;
+    padding: 0px;
+  }
+  .login-form {
+    padding: 25px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  .login-form h2,label{
+    text-align: center;
+    margin-bottom: 25px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 100;
+  }
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    width: calc(100% - 22px); /* Subtract padding and border width */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-sizing: border-box;
+    margin-bottom: 19px;
+  }
+ 
+  .login-form label {
+    font-weight: bold;
+  }
+  .login-form input[type="submit"] {
+    width: 95%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    margin-top: 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .login-form input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      width: 90%; /* Adjusted width */
+      height: auto; /* Adjusted height */
+    }
+    .left-side,
+    .right-side {
+      width: 100%;
+    }
+    .login-form input[type="submit"] {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-side">
+      <img class="login-image" src="Assets/login-image.jpg" alt="Image">
+    </div>
+    <div class="right-side">
+      <form class="login-form" action="pages/home.html" method="post" onsubmit="return validateForm()">
+        <h2>Welcome to INT INITIALS</h2>
+        <label for="username">Username:</label>
+        <input type="text"  id="username" name="username" required>
+        <label for="password">Password:</label>
+        <div style="position: relative;">
+          <input type="password" id="password" name="password" required>
+          <span style="position: absolute; right: 29px; top: 39%; transform: translateY(-50%); cursor: pointer;" onclick="togglePasswordVisibility()">
+            <img id="passwordToggle" src="https://img.icons8.com/material-outlined/24/000000/visible--v2.png" alt="Show Password">
+          </span>
+        </div>
+        <label><input type="checkbox" name="remember"> Remember me</label>
+        <input type="submit" value="Login">
+        <p style="text-align: center; margin-top: 10px;">Don't have an account? <a href="pages/register.html">Register</a></p>
+      </form>
+    </div>
+  </div>
+  
+  <script src="usersData.js"></script>
+  <script>
+  function validateForm() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+  
+    // Check if username and password match
+    if (usersData.hasOwnProperty(username) && usersData[username]["password"] === password) {
+      localStorage.setItem("loggedInUser", username); // Store logged-in user
+      return true; // Allow form submission
+    } else {
+      alert("Invalid username or password!");
+      return false; // Prevent form submission
+    }
+  }
+  
+  function togglePasswordVisibility() {
+    var passwordInput = document.getElementById("password");
+    var passwordToggle = document.getElementById("passwordToggle");
+  
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      passwordToggle.src = "https://img.icons8.com/material-outlined/24/000000/invisible.png";
+    } else {
+      passwordInput.type = "password";
+      passwordToggle.src = "https://img.icons8.com/material-outlined/24/000000/visible--v2.png";
+    }
+  }
+  </script>
+  
+  </body>
+  </html>

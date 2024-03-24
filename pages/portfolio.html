@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: #333;
+  }
+  a {
+    color: #f7a816;
+    text-decoration: none;
+  }
+  a:hover,
+  a:active,
+  a:focus {
+    color: #fcbd49;
+    outline: none;
+    text-decoration: none;
+  }
+  header {
+    
+    margin-top:-90px;
+    padding: 15px;
+    color: white;
+    text-align: left;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #020202;
+  }
+  header h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0;
+    display: inline;
+    margin-left: 50px;
+  }
+  header span {
+    font-weight: bold;
+    color: #ffcc00;
+  }
+  header nav {
+    margin-right: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  header a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+  header a:hover {
+    color: #ffcc00;
+    font-size: 17px;
+  }
+
+  .portfolio-container {
+    margin-left: 20%;
+    margin-top: 90px;
+    padding: 20px;
+    background-color: #222;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    
+    overflow: hidden;
+  }
+  .portfolio-container h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #ffcc00;
+    text-align: center;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+    color: #eee;
+  }
+  th {
+    background-color: #333;
+    font-weight: bold;
+  }
+  tr:nth-child(even) {
+    background-color: #444;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .portfolio-container{
+        margin-left: 0px;
+    }
+    header h1 {
+      font-size: 20px;
+      font-weight: bold;
+      margin: -1px;
+      display: inline;
+      margin-right: 45px;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1> <span>INT </span>INITIALS</h1>
+    <nav>
+      <a href="home.html">HOME</a>
+      
+    </nav>
+  </header>
+
+  <div class="portfolio-container">
+    <h2>Your Portfolio</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Sector</th>
+          <th>Token</th>
+          <th>Value</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="userStocksBody">
+        <!-- User's stock details will be populated here -->
+      </tbody>
+    </table>
+  </div>
+
+<script src="../usersData.js"></script>
+<script>
+  // Get logged-in user
+  var loggedInUser = localStorage.getItem("loggedInUser");
+
+  
+  if (!loggedInUser) {
+    // Redirect to index page if not logged in
+    window.location.href = "../index.html";
+  }
+
+
+  // Get user stocks data
+  var userStocks = usersData[loggedInUser].stocks;
+
+  // Populate user stocks table
+  var userStocksBody = document.getElementById("userStocksBody");
+  userStocks.forEach(function(stock) {
+    var row = "<tr><td>" + stock.Sector + "</td><td>" + stock.token + "</td><td>" + stock.value + "</td><td>" + stock.status + "</td></tr>";
+    userStocksBody.innerHTML += row;
+  });
+</script>
+
+</body>
+</html>
