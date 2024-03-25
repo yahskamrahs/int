@@ -24,7 +24,6 @@
     text-decoration: none;
   }
   header {
-    
     margin-top:-90px;
     padding: 15px;
     color: white;
@@ -72,7 +71,6 @@
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
     max-width: 800px;
-    
     overflow: hidden;
   }
   .portfolio-container h2 {
@@ -103,9 +101,49 @@
     background-color: #444;
   }
 
+  .summary-container {
+    margin-left: 20%;
+    padding: 20px;
+    background-color: #222;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    overflow: hidden;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .summary-container h2{
+   font-size: 17px;
+   color: #616161;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   margin-bottom: 2px;
+  }
+  .summary-column {
+    flex-basis: 45%; /* Adjust as needed */
+  }
+  .summary-label {
+    font-size: 14px; /* smaller font size */
+    color: #999; /* less visible color */
+    text-align: center; /* center the label */
+  }
+  .summary-value {
+    margin-left: 5px;
+    font-weight: bold;
+    color: #ffbf00;
+    text-align: center; /* center the value */
+  }
+
   @media only screen and (max-width: 600px) {
     .portfolio-container{
-        margin-left: 0px;
+        margin-left: -15px;
+    }
+    .summary-container {
+      margin-left: 0px;
+    }
+    .summary-container h2{
+      font-size: 10px;
     }
     header h1 {
       font-size: 20px;
@@ -122,7 +160,6 @@
     <h1> <span>INT </span>INITIALS</h1>
     <nav>
       <a href="home.html">HOME</a>
-      
     </nav>
   </header>
 
@@ -143,20 +180,32 @@
     </table>
   </div>
 
+  <div class="summary-container">
+    <div class="summary-column">
+      <h2>CURRENT HOLDINGS IN INT:</h2>
+      <span class="summary-value" id="currentHoldingINT"></span>
+    </div>
+    <div class="summary-column">
+      <h2>MARKET VALUE:</h2>
+      <span class="summary-value" id="marketValue"></span>
+    </div>
+  </div>
+
 <script src="../usersData.js"></script>
 <script>
   // Get logged-in user
   var loggedInUser = localStorage.getItem("loggedInUser");
 
-  
   if (!loggedInUser) {
     // Redirect to index page if not logged in
     window.location.href = "../index.html";
   }
 
+  // Get user data
+  var userData = usersData[loggedInUser];
 
   // Get user stocks data
-  var userStocks = usersData[loggedInUser].stocks;
+  var userStocks = userData.stocks;
 
   // Populate user stocks table
   var userStocksBody = document.getElementById("userStocksBody");
@@ -164,6 +213,13 @@
     var row = "<tr><td>" + stock.Sector + "</td><td>" + stock.token + "</td><td>" + stock.value + "</td><td>" + stock.status + "</td></tr>";
     userStocksBody.innerHTML += row;
   });
+
+  // Populate summary section
+  var currentHoldingINT = document.getElementById("currentHoldingINT");
+  currentHoldingINT.textContent = '₹' +userData.holding_int;
+
+  var marketValue = document.getElementById("marketValue");
+  marketValue.textContent ='₹' + userData.mrk_value;
 </script>
 
 </body>
